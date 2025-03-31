@@ -38,7 +38,7 @@ export function MainLayout() {
             'Незнакомец'
           ) : (
             <>
-              Привет,<span className={s.name}> {auth.user.email}</span>/
+              Привет,<span className={s.name}> {auth.user}</span>/
               <Button className={s.btnSignout} onClick={signout} text="Выход" />
             </>
           )}

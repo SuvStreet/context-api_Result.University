@@ -11,7 +11,7 @@ export function Home() {
         Добро пожаловать
         <span style={{ color: '#65e665' }}>
           {' '}
-          {auth.user && auth.user.email}
+          {auth.user !== null && auth.user}
         </span>{' '}
         на страничку о вселенной Рика и Морти!
       </h1>
