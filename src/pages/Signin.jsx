@@ -1,6 +1,9 @@
 import { useState, useRef } from 'react'
+import { useNavigate } from 'react-router'
+
 import { TextInput, Button } from '../components'
 import { validateForm } from '../services'
+import { useAuth } from '../context'
 
 import { faAt, faKey } from '@fortawesome/free-solid-svg-icons'
 
@@ -27,6 +30,8 @@ const inputs = [
 
 export const Signin = () => {
   const [errors, setErrors] = useState({})
+  const auth = useAuth()
+  const navigate = useNavigate()
 
   const formRef = useRef(null)
 
@@ -55,7 +60,9 @@ export const Signin = () => {
       return
     }
 
-    console.log('formValues :>> ', formValues)
+    auth.signin(formValues, () => {
+      navigate('/', { replace: true })
+    })
 
     formRef.current.reset()
   }
