@@ -5,8 +5,6 @@ export function PrivateRoute({ children }) {
   const auth = useAuth()
   const location = useLocation()
 
-  console.log('location :>> ', location)
-
   if (auth.user === null) {
     return <Navigate to="/signin" replace state={{ from: location }} />
   }
