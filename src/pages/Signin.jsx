@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { useNavigate } from 'react-router'
+import { useLocation, useNavigate } from 'react-router'
 
 import { TextInput, Button } from '../components'
 import { validateForm } from '../services'
@@ -32,6 +32,9 @@ export const Signin = () => {
   const [errors, setErrors] = useState({})
   const auth = useAuth()
   const navigate = useNavigate()
+  const location = useLocation()
+
+  const from = location.state?.from?.pathname || '/'
 
   const formRef = useRef(null)
 
@@ -61,7 +64,7 @@ export const Signin = () => {
     }
 
     auth.signin(formValues, () => {
-      navigate('/', { replace: true })
+      navigate(from, { replace: true })
     })
 
     formRef.current.reset()

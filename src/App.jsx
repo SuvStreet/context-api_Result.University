@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router'
 
-import { MainLayout } from './components'
+import { MainLayout, PrivateRoute } from './components'
 import { Category, Detail, Home, NotFound, Signin } from './pages'
 import { AuthProvider } from './context'
 
@@ -14,8 +14,22 @@ function App() {
           <Routes>
             <Route element={<MainLayout />}>
               <Route path="/" element={<Home />} />
-              <Route path="/:category" element={<Category />} />
-              <Route path="/:category/:id" element={<Detail />} />
+              <Route
+                path="/:category"
+                element={
+                  <PrivateRoute>
+                    <Category />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/:category/:id"
+                element={
+                  <PrivateRoute>
+                    <Detail />
+                  </PrivateRoute>
+                }
+              />
               <Route path="/signin" element={<Signin />} />
             </Route>
             <Route path="/*" element={<NotFound />} />
