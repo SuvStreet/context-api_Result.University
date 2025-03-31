@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router'
 
 import { MainLayout } from './components'
-import { Category, Detail, Home, NotFound } from './pages'
+import { Category, Detail, Home, NotFound, Signin } from './pages'
 import { AuthProvider } from './context'
 
 import './App.css'
@@ -16,6 +16,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/:category" element={<Category />} />
               <Route path="/:category/:id" element={<Detail />} />
+              <Route path="/signin" element={<Signin />} />
             </Route>
             <Route path="/*" element={<NotFound />} />
           </Routes>
